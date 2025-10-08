@@ -6,32 +6,34 @@
   <title>User/Update</title>
   <style>
     body {
-      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e293b, #0f172a); /* dark navy gradient */
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #ffd1dc, #fff0f5); /* soft pink gradient */
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      color: #e2e8f0;
+      color: #5a4a4a;
     }
 
     .form-container {
-      background: #1f2937;
-      padding: 30px 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      background: rgba(255, 245, 247, 0.9);
+      padding: 35px 45px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
       width: 360px;
       animation: fadeIn 0.6s ease-in-out;
-      border: 1px solid #334155;
+      border: 2px solid #ffc2d1;
     }
 
     .form-container h1 {
       text-align: center;
       margin-bottom: 20px;
       font-size: 22px;
-      color: #38bdf8; /* cyan accent */
+      color: #e75480; /* rose pink */
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     label {
@@ -39,50 +41,75 @@
       display: block;
       margin-top: 15px;
       margin-bottom: 6px;
-      color: #94a3b8;
+      color: #7a5c65;
+      font-size: 14px;
     }
 
-    input[type="text"], input[type="email"] {
+    input[type="text"],
+    input[type="email"] {
       width: 100%;
       padding: 12px;
-      border: 2px solid #334155;
-      border-radius: 10px;
+      border: 2px solid #ffc2d1;
+      border-radius: 12px;
       outline: none;
       transition: 0.3s;
       font-size: 15px;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: #fff;
+      color: #5a4a4a;
     }
 
-    input[type="text"]:focus, input[type="email"]:focus {
-      border-color: #38bdf8;
-      box-shadow: 0px 0px 8px rgba(56,189,248,0.5);
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: #ff8fab;
+      box-shadow: 0px 0px 8px rgba(255, 143, 171, 0.5);
     }
 
     input[type="submit"] {
       margin-top: 25px;
       width: 100%;
       padding: 12px;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8); /* bold blue */
+      background: linear-gradient(135deg, #ff9eb5, #ff7fa2);
       color: white;
       font-size: 16px;
       font-weight: bold;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 6px 12px rgba(37,99,235,0.4);
-      transition: 0.3s;
+      box-shadow: 0 6px 12px rgba(255, 143, 171, 0.5);
+      transition: all 0.3s ease;
     }
 
     input[type="submit"]:hover {
-      background: linear-gradient(135deg, #1e40af, #1d4ed8);
+      background: linear-gradient(135deg, #ff8fab, #ff6b9d);
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(37,99,235,0.6);
+      box-shadow: 0 8px 16px rgba(255, 111, 145, 0.6);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #ff6b9d;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: #e75480;
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -98,7 +125,7 @@
 
       <input type="submit" value="Update User">
     </form>
-    <a href="<?= site_url('user/view'); ?>" style="display: inline-block; margin-top: 15px; color: #60a5fa; font-weight: 600; text-decoration: underline;">&larr; Back to User List</a>
+    <a href="<?= site_url('user/view'); ?>">&larr; Back to User List</a>
   </div>
 </body>
 </html>

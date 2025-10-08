@@ -8,17 +8,17 @@
   <style>
     body {
       font-family: 'Poppins', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+      background: linear-gradient(135deg, #fce7f3, #f9a8d4, #fbcfe8);
       margin: 0;
       padding: 30px;
-      color: #f3f4f6;
+      color: #5b4256;
     }
 
     h1 {
       text-align: center;
       margin-bottom: 40px;
-      color: #60a5fa;
-      font-size: 2.2rem;
+      color: #be185d;
+      font-size: 2.3rem;
       font-weight: 700;
       letter-spacing: 1px;
     }
@@ -33,11 +33,11 @@
       display: flex;
       width: 100%;
       max-width: 380px;
-      background: rgba(30, 41, 59, 0.7);
+      background: rgba(255, 240, 245, 0.8);
       backdrop-filter: blur(10px);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.3);
     }
 
     .search-container input[type="text"] {
@@ -46,21 +46,22 @@
       outline: none;
       flex: 1;
       background: transparent;
-      color: #f3f4f6;
+      color: #4a274f;
+      font-weight: 500;
     }
 
     .search-container .search-btn {
       padding: 12px 20px;
       border: none;
       cursor: pointer;
-      background: #3b82f6;
+      background: #f472b6;
       color: white;
       font-weight: 600;
       transition: 0.3s;
     }
 
     .search-container .search-btn:hover {
-      background: #2563eb;
+      background: #ec4899;
     }
 
     .btn-container {
@@ -70,22 +71,22 @@
     }
 
     .create-btn {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      background: linear-gradient(135deg, #f9a8d4, #f472b6);
       color: white;
       padding: 12px 24px;
       text-decoration: none;
       border-radius: 50px;
       font-weight: bold;
       font-size: 15px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 14px rgba(244, 114, 182, 0.4);
       transition: all 0.3s ease;
       display: inline-block;
     }
 
     .create-btn:hover {
       transform: translateY(-2px);
-      background: #2563eb;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+      background: #ec4899;
+      box-shadow: 0 8px 18px rgba(236, 72, 153, 0.5);
     }
 
     table {
@@ -95,9 +96,9 @@
       border-spacing: 0;
       border-radius: 16px;
       overflow: hidden;
-      background: rgba(31, 41, 55, 0.7);
+      background: rgba(255, 240, 245, 0.85);
       backdrop-filter: blur(12px);
-      box-shadow: 0px 12px 30px rgba(0,0,0,0.4);
+      box-shadow: 0px 12px 30px rgba(236, 72, 153, 0.3);
     }
 
     th, td {
@@ -106,8 +107,8 @@
     }
 
     th {
-      background: #111827;
-      color: #93c5fd;
+      background: #f9a8d4;
+      color: white;
       font-size: 15px;
       font-weight: 700;
       text-transform: uppercase;
@@ -115,15 +116,15 @@
     }
 
     tr:nth-child(even) {
-      background: rgba(55, 65, 81, 0.6);
+      background: rgba(255, 182, 193, 0.4);
     }
 
     tr:nth-child(odd) {
-      background: rgba(31, 41, 55, 0.5);
+      background: rgba(255, 228, 235, 0.6);
     }
 
     tr:hover {
-      background: rgba(59, 130, 246, 0.2);
+      background: rgba(249, 168, 212, 0.5);
       transition: background 0.3s ease;
     }
 
@@ -136,24 +137,24 @@
     }
 
     a[href*="update"] {
-      background: #3b82f6;
+      background: #f472b6;
       color: white;
     }
 
     a[href*="update"]:hover {
-      background: #2563eb;
+      background: #ec4899;
     }
 
     a[href*="delete"] {
-      background: #ef4444;
+      background: #f87171;
       color: white;
     }
 
     a[href*="delete"]:hover {
-      background: #dc2626;
+      background: #ef4444;
     }
 
-    /* Pagination modern look */
+    /* Pagination */
     .pagination-container {
       width: 85%;
       margin: 30px auto;
@@ -176,32 +177,31 @@
     .pagination-container strong {
       padding: 10px 16px;
       border-radius: 50px;
-      background: rgba(55, 65, 81, 0.8);
-      color: #f3f4f6;
+      background: rgba(255, 182, 193, 0.7);
+      color: #4a274f;
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
       transition: all 0.3s;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 3px 8px rgba(244, 114, 182, 0.3);
     }
 
     .pagination-container a:hover {
-      background: #3b82f6;
+      background: #f472b6;
       color: white;
       transform: translateY(-2px);
     }
 
     .pagination-container strong {
-      background: #3b82f6;
+      background: #ec4899;
       color: white;
-      box-shadow: 0 4px 12px rgba(59,130,246,0.5);
+      box-shadow: 0 4px 12px rgba(236,72,153,0.4);
     }
 
-    /* ✅ Fix focus blue highlight */
     .pagination-container a:focus,
     .pagination-container strong:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #3b82f6; /* subtle glow instead of blue square */
+      box-shadow: 0 0 0 2px #f9a8d4;
     }
   </style>
 </head>
@@ -230,7 +230,7 @@
     </a>
     <?php endif; ?>
     <?php if ($current_role !== 'guest'): ?>
-    <a href="<?= site_url('logout'); ?>" class="create-btn" style="background: #ef4444; margin-left: 10px;">
+    <a href="<?= site_url('logout'); ?>" class="create-btn" style="background: linear-gradient(135deg, #f87171, #ef4444); margin-left: 10px;">
       Logout
     </a>
     <?php endif; ?>
@@ -261,7 +261,6 @@
     <?php endforeach; ?>
   </table>
 
-  <!-- Pagination links -->
   <div class="pagination-container">
     <?php if (isset($page)) echo $page; ?>
   </div>
