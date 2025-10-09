@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Register</title>
+  <meta charset="UTF-8" />
+  <title>Register</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
     body {
       font-family: 'Poppins', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+      background: linear-gradient(135deg, #ffd6e8, #ffe6f2, #fff0f5);
       margin: 0;
       padding: 30px;
-      color: #f3f4f6;
+      color: #5a3b47;
     }
 
     .container {
       max-width: 400px;
       margin: 50px auto;
-      background: rgba(31, 41, 55, 0.7);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0px 12px 30px rgba(0,0,0,0.4);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0px 10px 30px rgba(255, 182, 193, 0.4);
+      border: 1px solid rgba(255, 182, 193, 0.3);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 30px;
-      color: #60a5fa;
+      margin-bottom: 25px;
+      color: #e75480;
       font-size: 2rem;
       font-weight: 700;
       letter-spacing: 1px;
@@ -36,26 +43,38 @@
       display: block;
       margin-top: 10px;
       font-weight: 600;
-      color: #93c5fd;
+      color: #b84a62;
     }
 
-    input[type="text"], input[type="password"], input[type="email"], select {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
       width: 100%;
       padding: 12px 16px;
       margin-top: 5px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: rgba(30, 41, 59, 0.7);
-      color: #f3f4f6;
+      border-radius: 10px;
+      border: 1px solid #f9c5d1;
+      background: rgba(255, 240, 245, 0.9);
+      color: #5a3b47;
       font-size: 14px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus {
-      background: rgba(59, 130, 246, 0.2);
-      box-shadow: 0 0 0 2px #3b82f6;
+    input:focus, select:focus {
+      background: #ffe6f2;
+      box-shadow: 0 0 0 2px #ffb6c1;
+      outline: none;
+    }
+
+    select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, #e75480 50%), 
+                        linear-gradient(135deg, #e75480 50%, transparent 50%);
+      background-position: calc(100% - 15px) calc(1em + 2px),
+                           calc(100% - 10px) calc(1em + 2px);
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
     }
 
     button {
@@ -64,85 +83,101 @@
       width: 100%;
       border-radius: 50px;
       border: none;
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      background: linear-gradient(135deg, #ffb6c1, #ff9eb5);
       color: white;
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 14px rgba(255, 182, 193, 0.4);
       transition: all 0.3s ease;
     }
 
     button:hover {
-      background: #2563eb;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #ff9eb5, #ff7fa2);
+      box-shadow: 0 8px 18px rgba(255, 105, 180, 0.5);
       transform: translateY(-2px);
     }
 
     .toggle-password {
       cursor: pointer;
       font-size: 0.9em;
-      color: #60a5fa;
+      color: #e75480;
       text-decoration: underline;
       margin-top: 5px;
       display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: #ff69b4;
     }
 
     p {
       margin-top: 20px;
       text-align: center;
-      color: #f3f4f6;
+      color: #5a3b47;
     }
 
     a {
-      color: #3b82f6;
+      color: #e75480;
       font-weight: 600;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     a:hover {
-      color: #2563eb;
+      color: #ff69b4;
+    }
+
+    .error {
+      color: #ff4d6d;
+      background: rgba(255, 240, 245, 0.6);
+      border: 1px solid #ffb6c1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Register</h2>
-        <?php if (!empty($error)): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-        <form method="post" action="<?= site_url('register') ?>">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required />
+  <div class="container">
+    <h2>Register</h2>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+    <?php if (!empty($error)): ?>
+      <p class="error"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-            <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+    <form method="post" action="<?= site_url('register') ?>">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
 
-            <label for="role">Role</label>
-            <select id="role" name="role" required>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
 
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="<?= site_url('login') ?>">Login here</a></p>
-    </div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+      <span class="toggle-password" onclick="togglePassword()">Show Password</span>
 
-    <script>
-        function togglePassword() {
-            var pwd = document.getElementById('password');
-            if (pwd.type === 'password') {
-                pwd.type = 'text';
-            } else {
-                pwd.type = 'password';
-            }
-        }
-    </script>
+      <label for="role">Role</label>
+      <select id="role" name="role" required>
+        <option value="" disabled selected>Choose a role</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="<?= site_url('login') ?>">Login here</a></p>
+  </div>
+
+  <script>
+    function togglePassword() {
+      var pwd = document.getElementById('password');
+      pwd.type = (pwd.type === 'password') ? 'text' : 'password';
+    }
+  </script>
 </body>
 </html>
